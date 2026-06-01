@@ -1,0 +1,57 @@
+{
+  "server": {
+    "host": "Bottest-d7bF.aternos.me",
+    "port": 28572,
+    "username": "TickelBot",
+    "auth": "offline",
+    "version": "1.20"
+  },
+  "bot": {
+    "autoReconnect": true,
+    "reconnectDelay": 5000,
+    "maxReconnectAttempts": 10,
+    "checkTicks": 20,
+    "pathfindingTimeout": 30000,
+    "movementSpeed": 1.0
+  },
+  "features": {
+    "survival": true,
+    "pathfinding": true,
+    "logging": true,
+    "dashboard": true,
+    "memory": true
+  },
+  "survival": {
+    "autoEat": true,
+    "autoSleep": true,
+    "autoEquipArmor": true,
+    "hungerThreshold": 10,
+    "healthThreshold": 10,
+    "sleepAtNight": true
+  },
+  "dashboard": {
+    "port": 3000,
+    "host": "0.0.0.0",
+    "updateInterval": 500
+  },
+  "logging": {
+    "level": "debug",
+    "format": "[{timestamp}] {level}: {message}",
+    "maxFileSize": "10m",
+    "maxFiles": 5
+  },
+  "memory": {
+    "persistPath": "./data/memory.json",
+    "autoSave": true,
+    "saveInterval": 30000
+  },
+  "permissions": {
+    "defaultLevel": 2,
+    "adminUsers": [],
+    "commands": {
+      "admin": 2,
+      "moderator": 1,
+      "user": 0
+    }
+  }
+}

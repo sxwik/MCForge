@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft Bot Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 Minecraft Bot Dashboard</h1>
+            <div class="status-indicator">
+                <span id="connectionStatus" class="status disconnected">● Offline</span>
+            </div>
+        </header>
+
+        <div class="dashboard-grid">
+            <section class="card bot-status">
+                <h2>Bot Status</h2>
+                <div class="status-grid">
+                    <div class="stat">
+                        <label>Health</label>
+                        <div class="health-bar">
+                            <div id="healthBar" class="health-fill" style="width: 100%"></div>
+                        </div>
+                        <span id="healthValue">20/20</span>
+                    </div>
+                    <div class="stat">
+                        <label>Hunger</label>
+                        <div class="hunger-bar">
+                            <div id="hungerBar" class="hunger-fill" style="width: 100%"></div>
+                        </div>
+                        <span id="hungerValue">20/20</span>
+                    </div>
+                    <div class="stat">
+                        <label>Position</label>
+                        <span id="positionValue">X: 0, Y: 0, Z: 0</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card inventory">
+                <h2>Inventory</h2>
+                <div id="inventoryContainer" class="inventory-slots">
+                    <!-- Populated by JS -->
+                </div>
+            </section>
+
+            <section class="card current-task">
+                <h2>Current Task</h2>
+                <div id="taskInfo">
+                    <p>No active task</p>
+                </div>
+            </section>
+
+            <section class="card command-console">
+                <h2>Command Console</h2>
+                <div class="console-input">
+                    <input type="text" id="commandInput" placeholder="Enter command (e.g., !help, !goto 100 64 100)">
+                    <button onclick="sendCommand()">Send</button>
+                </div>
+                <div class="console-input">
+                    <input type="text" id="aiCommandInput" placeholder="Natural language (e.g., gather 64 stone)">
+                    <button onclick="sendAICommand()">Execute AI</button>
+                </div>
+            </section>
+
+            <section class="card chat-console">
+                <h2>Chat Console</h2>
+                <div id="chatContainer" class="chat-messages">
+                    <!-- Chat messages here -->
+                </div>
+                <input type="text" id="chatInput" placeholder="Send message" onkeypress="handleChatKeypress(event)">
+            </section>
+
+            <section class="card multi-bot">
+                <h2>Multi-Bot System</h2>
+                <div id="botsList" class="bots-list">
+                    <!-- Bots listed here -->
+                </div>
+            </section>
+
+            <section class="card memory">
+                <h2>Saved Locations</h2>
+                <div id="memoryInfo">
+                    <p id="homeLocation">Home: Not set</p>
+                    <p id="storageLocation">Storage: Not set</p>
+                    <button onclick="setHome()">Set Home</button>
+                </div>
+            </section>
+
+            <section class="card logs">
+                <h2>Live Logs</h2>
+                <div id="logsContainer" class="logs">
+                    <!-- Logs here -->
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

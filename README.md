@@ -1,145 +1,64 @@
-# 🤖 Minecraft Bot - Production-Grade Automation Platform
+# McForge - Production-Grade Automation Platform
 
-A complete, autonomous Minecraft bot system with browser-based dashboard control, multi-bot support, and AI command interpretation.
+A fully autonomous Minecraft bot system with a browser-based dashboard, multi-bot support, and natural language command interpretation. Think of it as your personal Minecraft workforce—whether you need someone to gather resources, build structures, or defend your base, this bot's got you covered.
 
-## ✨ Features
+## What's Included
 
-### Core Systems
-- ✅ Auto-reconnect with configurable retry attempts
-- ✅ Comprehensive logging system with file rotation
-- ✅ Permission management for multi-user environments
-- ✅ Command handler with extensible architecture
-- ✅ Error handling and graceful recovery
-- ✅ Settings persistence
+This project provides a complete automation solution for Minecraft Java servers. You get a responsive web dashboard for real-time control, intelligent movement and pathfinding, survival features that keep your bot alive, and a sophisticated task queuing system that handles complex operations.
 
-### Movement & Navigation
-- ✅ A* pathfinding with mineflayer-pathfinder
-- ✅ Follow player functionality
-- ✅ Go to coordinates (!goto x y z)
-- ✅ Come command (!come)
-- ✅ Stop movement (!stop)
-- ✅ Wander mode for exploration
-- ✅ Anti-stuck detection
-- ✅ Path recalculation on obstacles
+The bot understands natural language commands too. Tell it to "gather 64 stone" or "mine diamonds" and it figures out what to do. For power users, there's a traditional command system with granular permission management.
 
-### Survival AI
-- ✅ Auto-eat when hungry
-- ✅ Auto-sleep at night
-- ✅ Auto-equip armor
-- ✅ Auto-health management
-- ✅ Lava avoidance
-- ✅ Creeper detection
-- ✅ Auto-respawn
-- ✅ Toggleable survival mode
+## Key Features
 
-### Inventory Management
-- ✅ Inventory viewer with live updates
-- ✅ Item counting
-- ✅ Deposit/withdraw items
-- ✅ Auto-sort functionality
-- ✅ Auto-equip tools
-- ✅ Hotbar management
+**Movement & Exploration**  
+The bot navigates using A* pathfinding and can follow players, travel to coordinates, or wander around exploring. It detects when it's stuck and recalculates paths automatically.
 
-### Mining System
-- ✅ Mine specific ore types
-- ✅ Ore prioritization system
-- ✅ Tool auto-selection
-- ✅ Strip mining mode
-- ✅ Quarry mode
-- ✅ Y-level optimization
+**Survival Intelligence**  
+It eats when hungry, sleeps at night, equips armor, avoids lava and creepers, and respawns if needed. All of this runs in the background so you don't have to babysit it.
 
-### Building System
-- ✅ Single block placement
-- ✅ Wall building
-- ✅ House construction
-- ✅ Structure templates
-- ✅ Build progress tracking
-- ✅ Schematic support (foundation)
+**Mining & Resource Gathering**  
+Mine specific ores with intelligent tool selection, run strip mining operations, or use quarry mode to systematically clear areas. The bot learns which ores are most valuable and prioritizes accordingly.
 
-### Combat AI
-- ✅ Attack hostile mobs
-- ✅ Shield usage
-- ✅ Bow usage with angle calculation
-- ✅ Retreat when low health
-- ✅ Mob detection
-- ✅ Guard mode for area protection
+**Building System**  
+Place individual blocks, build walls, construct entire structures, and even load schematics. It tracks progress and recovers gracefully from interruptions.
 
-### Task Queue System
-- ✅ Sequential task execution
-- ✅ Priority-based queuing
-- ✅ Pause/resume/cancel tasks
-- ✅ Task status tracking
-- ✅ Error handling per task
+**Combat Ready**  
+Attack hostile mobs, use shields, fire bows with proper angle calculation, and retreat when health is low. There's also a guard mode if you want the bot to protect an area.
 
-### Memory System
-- ✅ Save home locations
-- ✅ Save storage locations
-- ✅ Mine cataloging
-- ✅ Waypoint system
-- ✅ Death location tracking
-- ✅ Persistent JSON storage
-- ✅ Auto-save functionality
+**Smart Inventory Management**  
+Live inventory viewing, item sorting, automatic tool equipping, and the ability to deposit or withdraw specific items.
 
-### AI Command Interpreter
-- ✅ Natural language processing
-- ✅ Command parsing patterns
-- ✅ Task auto-generation
-- ✅ Examples:
-  - "Gather 64 stone"
-  - "Mine diamond"
-  - "Go to my base"
-  - "Build house.schem"
-  - "Protect area"
-  - "Follow player"
+**Memory & Waypoints**  
+Save home locations, storage points, mines, and waypoints. The bot remembers where it died and learns your base layout over time.
 
-### Multi-Bot System
-- ✅ Multiple bot management
-- ✅ BuilderBot (construction)
-- ✅ MinerBot (resource gathering)
-- ✅ FarmerBot (harvesting)
-- ✅ GuardBot (protection)
-- ✅ Bot coordination
-- ✅ Capability-based task assignment
-- ✅ System status monitoring
+**Multi-Bot Coordination**  
+Run multiple specialized bots simultaneously—builders, miners, farmers, guards. The system automatically assigns tasks based on each bot's capabilities.
 
-### Browser Dashboard
-- ✅ Real-time bot status (health, hunger, position)
-- ✅ Live inventory viewer
-- ✅ Command console
-- ✅ Chat console
-- ✅ Task status display
-- ✅ Saved locations management
-- ✅ Multi-bot control panel
-- ✅ Live logs
-- ✅ Socket.io live updates
-- ✅ Responsive design
+## Getting Started
 
-## 🚀 Quick Start
+### What You Need
 
-### Prerequisites
-- Node.js 14+
+- Node.js 14 or higher
 - npm
-- Minecraft server (Java Edition)
+- A Minecraft Java Edition server
 
 ### Installation
 
 ```bash
-# Clone or extract the project
-cd minecraft-bot
+# Get the code
+cd mcforge
 
 # Install dependencies
 npm install
 
-# Copy environment example
+# Set up your config
 cp .env.example .env
-
-# Edit configuration
 nano src/config/default.json
 ```
 
-### Configure Server
+### Configuration
 
-Edit `src/config/default.json`:
+Edit `src/config/default.json` with your server details:
 
 ```json
 {
@@ -147,183 +66,127 @@ Edit `src/config/default.json`:
     "host": "your-server.com",
     "port": 25565,
     "username": "YourBotName",
-    "auth": "offline"
+    "auth": "offline",
+    "version": "1.20"
   },
   "dashboard": {
     "port": 3000
+  },
+  "survival": {
+    "autoEat": true,
+    "autoSleep": true,
+    "autoEquipArmor": true
   }
 }
 ```
 
-### Run
+### Launch
 
 ```bash
 npm start
 ```
 
-The bot will:
-1. Connect to your Minecraft server
-2. Start the dashboard on http://localhost:3000
-3. Initialize all systems
-4. Begin accepting commands
+The bot connects to your server and launches the dashboard at `http://localhost:3000`. From there, you can see real-time status, inventory, and send commands.
 
-## 📊 Dashboard Access
+## Using the Dashboard
 
-Open your browser and navigate to:
-```
-http://localhost:3000
-```
+> ⚠️ **Note**: The GUI dashboard is currently under development. Core functionality is working, but features and UI may change.
 
-### Features Available:
-- **Bot Status**: Real-time health, hunger, coordinates
-- **Inventory**: Live item tracking
-- **Commands**: Execute game commands
-- **AI Commands**: Natural language task execution
+Open your browser to `http://localhost:3000` and you'll see:
+
+- **Live Status**: Health, hunger, position, and whether the bot is moving
+- **Inventory Viewer**: What the bot is carrying, updated in real-time
+- **Command Console**: Execute commands directly
 - **Chat**: Send messages to the server
-- **Memory**: Manage saved locations
-- **Multi-Bot**: Control multiple bots
+- **Saved Locations**: Manage home, storage, and mine locations
+- **Task Monitor**: Watch what the bot is working on
+- **Multi-Bot Panel**: Control multiple bots from one place
 
-## 🎮 Commands
+## Commands
 
 ### Navigation
 ```
-!goto <x> <y> <z>      # Go to coordinates
-!follow <player>       # Follow a player
-!come                  # Come to caller
-!stop                  # Stop movement
-!wander                # Wander mode
+!goto <x> <y> <z>      Go to specific coordinates
+!follow <player>       Follow another player
+!come                  Come to whoever sent the command
+!stop                  Stop moving immediately
+!wander                Explore the area
 ```
 
-### Location Memory
+### Locations
 ```
-!sethome               # Set home location
-!home                  # Go to home
-!setmine <name>        # Save mine location
-!storage <name>        # Save storage
-```
-
-### Survival
-```
-!survive on            # Enable survival mode
-!survive off           # Disable survival mode
+!sethome               Save current location as home
+!home                  Return to saved home
+!setmine <name>        Save a mine location
+!storage <name>        Save storage location
 ```
 
-### Inventory
+### Inventory & Resources
 ```
-!inventory             # Show inventory
-!deposit <item>        # Deposit item
-!withdraw <item>       # Withdraw item
-```
-
-### Mining
-```
-!mine <ore>            # Mine specific ore
-!stripmine             # Strip mining mode
+!inventory             See what you're carrying
+!deposit <item>        Store an item
+!withdraw <item>       Grab an item from storage
+!mine <ore>            Mine a specific ore type
+!stripmine             Run strip mining mode
 ```
 
-### Information
+### Survival & Status
 ```
-!help                  # Show commands
-!ping                  # Ping bot
-!status                # Bot status
-```
-
-### AI Commands
-```
-!ai gather 64 stone         # Mine 64 stone
-!ai mine diamond            # Find and mine diamonds
-!ai go to my base           # Navigate to home
-!ai build house.schem       # Build structure
-!ai protect area            # Guard current area
+!survive on            Enable automatic survival features
+!survive off           Disable survival features
+!status                Check bot health and position
+!ping                  Quick response check
 ```
 
-## 📁 Project Structure
+### AI Commands (Natural Language)
+```
+!ai gather 64 stone         Mine 64 blocks of stone
+!ai mine diamond            Find and extract diamonds
+!ai go to my base           Navigate to saved home
+!ai build house.schem       Construct a structure
+!ai protect area            Guard the current area
+```
+
+## Project Structure
 
 ```
-minecraft-bot/
+mcforge/
 ├── src/
-│   ├── bot.js                    # Main bot system
-│   ├── config/
-│   │   └── default.json          # Configuration
-│   ├── commands/
-│   │   └── commandHandler.js     # Command processing
-│   ├── dashboard/
-│   │   └── dashboardServer.js    # Express server
-│   ├── memory/
-│   │   └── memoryManager.js      # Location storage
-│   ├── movement/
-│   │   └── movement.js           # Pathfinding
-│   ├── survival/
-│   │   └── survivalAI.js         # Auto-eat, sleep, etc
-│   ├── inventory/
-│   │   └── inventoryManager.js   # Item management
-│   ├── mining/
-│   │   └── miningSystem.js       # Mining logic
-│   ├── building/
-│   │   └── buildingSystem.js     # Building system
-│   ├── combat/
-│   │   └── combatAI.js           # Combat logic
-│   ├── ai/
-│   │   └── aiInterpreter.js      # NLP commands
-│   ├── tasks/
-│   │   └── taskQueue.js          # Task scheduling
-│   ├── multiBot/
-│   │   └── multiBotManager.js    # Multi-bot control
-│   └── utils/
-│       ├── logger.js             # Logging
-│       ├── configLoader.js       # Config management
-│       ├── permissionManager.js  # Permissions
-│       └── eventEmitter.js       # Event system
+│   ├── bot.js                    Main bot logic
+│   ├── config/default.json       Configuration file
+│   ├── commands/                 Command handlers
+│   ├── dashboard/                Web server and UI
+│   ├── memory/                   Location storage
+│   ├── movement/                 Pathfinding and navigation
+│   ├── survival/                 Auto-eat, sleep, armor
+│   ├── inventory/                Item management
+│   ├── mining/                   Mining operations
+│   ├── building/                 Construction system
+│   ├── combat/                   Combat and mob handling
+│   ├── ai/                       Natural language processing
+│   ├── tasks/                    Task queue system
+│   ├── multiBot/                 Multi-bot coordination
+│   └── utils/                    Logging, permissions, config
 ├── public/
-│   ├── index.html                # Dashboard UI
-│   ├── css/
-│   │   └── style.css             # Styling
-│   └── js/
-│       └── dashboard.js          # Dashboard logic
-├── index.js                      # Entry point
-├── package.json                  # Dependencies
-└── README.md                     # This file
+│   ├── index.html                Dashboard interface
+│   ├── css/style.css             Styling
+│   └── js/dashboard.js           Frontend logic
+├── index.js                      Entry point
+└── package.json
 ```
 
-## 🔧 Configuration
+## Advanced Configuration
 
-### Default Config (`src/config/default.json`)
+The full configuration supports quite a bit of customization:
 
 ```json
 {
-  "server": {
-    "host": "Bottest-d7bF.aternos.me",
-    "port": 28572,
-    "username": "TickelBot",
-    "auth": "offline",
-    "version": "1.20"
-  },
   "bot": {
     "autoReconnect": true,
     "reconnectDelay": 5000,
     "maxReconnectAttempts": 10,
     "pathfindingTimeout": 30000,
     "movementSpeed": 1.0
-  },
-  "features": {
-    "survival": true,
-    "pathfinding": true,
-    "logging": true,
-    "dashboard": true,
-    "memory": true
-  },
-  "survival": {
-    "autoEat": true,
-    "autoSleep": true,
-    "autoEquipArmor": true,
-    "hungerThreshold": 10,
-    "healthThreshold": 10,
-    "sleepAtNight": true
-  },
-  "dashboard": {
-    "port": 3000,
-    "host": "0.0.0.0",
-    "updateInterval": 500
   },
   "logging": {
     "level": "debug",
@@ -338,21 +201,12 @@ minecraft-bot/
 }
 ```
 
-## 📝 Logging
+Logs are automatically rotated and stored in `src/logs/` with timestamps.
 
-Logs are stored in `src/logs/` with automatic rotation:
-- Format: `bot-YYYY-MM-DD.log`
-- Configurable size limits and retention
-- Includes ERROR, WARN, INFO, DEBUG levels
+## Permissions
 
-## 🔐 Permissions
+Set permission levels for different users:
 
-Permission levels:
-- **User** (0): Basic commands
-- **Moderator** (1): Advanced operations
-- **Admin** (2): System commands
-
-Set in config:
 ```json
 "permissions": {
   "defaultLevel": "user",
@@ -365,87 +219,78 @@ Set in config:
 }
 ```
 
-## 🤝 Multi-Bot System
+Permission levels:
+- **User** (0): Basic navigation and information commands
+- **Moderator** (1): Advanced operations and item management
+- **Admin** (2): System commands and bot control
 
-Create multiple bot instances:
+## Running Multiple Bots
+
+Create a specialized bot fleet:
 
 ```javascript
 const platform = new MinecraftBotPlatform();
 
-// Create multiple bots
-botManager.createBot('Builder1', 'builder');
-botManager.createBot('Miner1', 'miner');
-botManager.createBot('Farmer1', 'farmer');
-botManager.createBot('Guard1', 'guard');
+botManager.createBot('BuilderBot', 'builder');
+botManager.createBot('MinerBot', 'miner');
+botManager.createBot('FarmerBot', 'farmer');
+botManager.createBot('GuardBot', 'guard');
 
-// Coordinate tasks
+// The system automatically coordinates based on task requirements
 botManager.coordinateBots({
   requiredCapabilities: ['build', 'place'],
   schematic: 'house.schem'
 });
 ```
 
-## 🚨 Troubleshooting
+## Troubleshooting
 
-### Bot won't connect
-- Check server host/port in config
-- Ensure username doesn't conflict
-- Verify authentication type
+**Bot won't connect to the server**  
+Double-check your host and port in the config. Make sure the username doesn't conflict with existing players. Verify you're using the right authentication type.
 
-### Dashboard not loading
-- Check if port 3000 is available
-- Verify `npm install` completed
-- Check browser console for errors
+**Dashboard isn't loading**  
+Confirm port 3000 isn't already in use. Run `npm install` again to ensure all dependencies are there. Check your browser's developer console for errors.
 
-### Commands not working
-- Ensure bot has spawned (check logs)
-- Verify command syntax
-- Check permissions level
+**Commands aren't working**  
+Make sure the bot has finished spawning (check the logs). Verify the command syntax matches. Check if your permission level allows the command.
 
-### Low performance
-- Reduce `updateInterval` in dashboard config
-- Enable fewer features
-- Check available server resources
+**Performance issues**  
+Try increasing the `updateInterval` in the dashboard config. Disable features you don't need. Make sure your machine has enough resources for the pathfinding calculations.
 
-## 📦 Dependencies
+## Dependencies
 
-- **mineflayer** (4.37.1): Minecraft bot framework
-- **mineflayer-pathfinder** (2.4.5): Pathfinding plugin
-- **minecraft-data** (2.122.0): Game data
-- **express** (4.18.2): Web server
-- **socket.io** (4.5.4): Real-time updates
+- **mineflayer** - The core Minecraft bot framework
+- **mineflayer-pathfinder** - A* pathfinding for navigation
+- **minecraft-data** - Game data and protocol info
+- **express** - Web server for the dashboard
+- **socket.io** - Real-time updates between bot and dashboard
 
-## 🤖 Architecture
+## Architecture
 
-The system uses a modular design with:
-- **Event-driven** architecture for responsiveness
-- **Task queue** for sequential operations
-- **Memory management** for state persistence
-- **Permission-based** command execution
-- **Multi-bot** coordination layer
+The system is built on modular, event-driven principles. Commands flow through handlers, tasks queue sequentially, and all state persists to disk. The multi-bot layer sits on top and coordinates work across multiple instances.
 
-## 🛠️ Development
+## Extending the Bot
 
-### Adding Custom Commands
+**Add a Custom Command**
 
 ```javascript
 commandHandler.register('mycommand', {
-  description: 'My custom command',
+  description: 'What my command does',
   handler: ({ bot, args, username }) => {
-    // Your logic here
+    bot.chat(`Hello ${username}!`);
   }
 });
 ```
 
-### Adding Task Handlers
+**Add a Task Type**
 
 ```javascript
 taskQueue.registerHandler('mytask', async (task, bot) => {
-  // Execute task
+  // Do something with the bot
 });
 ```
 
-### Adding AI Patterns
+**Add an AI Pattern**
 
 ```javascript
 // In AIInterpreter.initializePatterns()
@@ -455,24 +300,23 @@ mycommand: {
 }
 ```
 
-## 📄 License
+## License
 
-ISC
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+## Thanks
 
-- Mineflayer team for the amazing bot framework
-- Prismarine community for minecraft-data
-- All contributors
+Built with the amazing work from the Mineflayer team, the Prismarine community, and everyone who contributed ideas along the way.
 
-## 🔗 Useful Links
+## Links
 
 - [Mineflayer GitHub](https://github.com/PrismarineJS/mineflayer)
-- [Minecraft Protocol](https://wiki.vg/)
-- [Prismarine](https://github.com/PrismarineJS)
+- [Minecraft Protocol Wiki](https://wiki.vg/)
+- [Prismarine Project](https://github.com/PrismarineJS)
 
 ---
 
-**Status**: Production-Ready
-**Version**: 2.0.0
-**Last Updated**: 2026
+**Status**: Alpha  
+**Version**: v1 alpha  
+**GitHub**: [@sxwik](https://github.com/sxwik)  
+**Updated**: 2026
